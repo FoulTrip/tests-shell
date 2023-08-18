@@ -9,19 +9,25 @@ int _unsetenv(const char *name)
 	int i, j;
 
 	if (name == NULL || name[0] == '\0' || strchr(name, '=') != NULL)
+	{
+		/* Invalid variable name */
+		return (-1);
+	}
 
+	/* Iterate through the environment variables */
 	for (i = 0; environ[i] != NULL; ++i)
 	{
 		if (strncmp(name, environ[i], strlen(name)) == 0 && environ[i][strlen(name)] == '=')
 		{
 			for (j = i; environ[j] != NULL; ++j)
 			{
-				environ[j] = environ[j + i];
+				environ[j] = environ[j + 1];
 			}
 			return (0);
 		}
 	}
 
+        /*  */
 	return (-1);
 }
 

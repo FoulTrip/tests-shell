@@ -9,7 +9,6 @@ int _unsetenv(const char *name)
 	int i, j;
 
 	if (name == NULL || name[0] == '\0' || strchr(name, '=') != NULL)
-		return (-1);
 
 	for (i = 0; environ[i] != NULL; ++i)
 	{
@@ -31,6 +30,8 @@ int main()
 	setenv("TEST_VARIABLE", "hello, World", 1);
 
 	printf("Before removal: TEST_VAR=%s\n", getenv("TEST_VAR"));
+
+	_unsetenv("TEST_VAR_CPY");
 
 	printf("After removal: TEST_VAR=%s\n", getenv("TEST_VAR"));
 

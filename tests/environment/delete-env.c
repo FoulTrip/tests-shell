@@ -23,6 +23,7 @@ int _unsetenv(const char *name)
 			{
 				environ[j] = environ[j + 1];
 			}
+			environ[j] = NULL;
 			return (0);
 		}
 	}

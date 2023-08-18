@@ -36,7 +36,7 @@ int main()
 {
 	setenv("TEST_VARIABLE", "hello, World", 1);
 
-	printf("Before removal: TEST_VARIABLER=%s\n", getenv("TEST_VARIABLE"));
+	printf("Before removal: TEST_VARIABLE=%s\n", getenv("TEST_VARIABLE"));
 
 	_unsetenv("TEST_VARIABLE");
 

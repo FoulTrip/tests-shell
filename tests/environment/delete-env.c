@@ -31,9 +31,9 @@ int main()
 
 	printf("Before removal: TEST_VARIABLER=%s\n", getenv("TEST_VARIABLE"));
 
-	_unsetenv("TEST_VARIABLE_CPY");
+	_unsetenv("TEST_VARIABLE");
 
-	printf("After removal: TEST_VARIABLE_CPY=%s\n", getenv("TEST_VARIABLE_CPY"));
+	printf("After removal: TEST_VARIABLE=%s\n", getenv("TEST_VARIABLE"));
 
 	return (0);
 }

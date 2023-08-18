@@ -60,18 +60,11 @@ int main()
 {
 	setenv("TEST_VARIABLE", "hello, World", 1);
 
-	printf("Before removal: TEST_VAR=%s\n", getenv("TEST_VARIABLE"));
+	printf("Before removal: TEST_VARIABLER=%s\n", getenv("TEST_VARIABLE"));
 
 	_unsetenv("TEST_VARIABLE_CPY");
 
-	printf("After removal: TEST_VAR=%s\n", getenv("TEST_VARIABLE_CPY"));
-
-	return (0);
-}"));
-
-	_unsetenv("TEST_VAR_CPY");
-
-	printf("After removal: TEST_VAR=%s\n", getenv("TEST_VAR"));
+	printf("After removal: TEST_VARIABLE_CPY=%s\n", getenv("TEST_VARIABLE_CPY"));
 
 	return (0);
 }

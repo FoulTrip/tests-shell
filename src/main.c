@@ -21,7 +21,18 @@ int main()
 
 		input[strcspn(input, "\n")] = '\0';
 
-		executeCommand(input);
+		if (strcmp(input, "exit") == 0)
+		{
+			break;
+		}
+		else if (strcspn(input, "env") == 0)
+		{
+			printEnvironment();
+		}
+		else
+		{
+			executeCommand(input);
+		}
 	}
 
 	return (0);

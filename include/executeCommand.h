@@ -7,5 +7,6 @@
 #include <sys/wait.h>
 
 void executeCommand(const char *command);
+void printEnvironment();
 
 #endif

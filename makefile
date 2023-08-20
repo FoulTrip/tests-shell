@@ -1,21 +1,27 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -pedantic -std=gnu89
+CFLAGS = -Wall -Werror -Wextra -pedantic -std=gnu89 -Iinclude
 
-DIR_SRC = src
-UTILS_DIR = utils
+SRCDIR = src
+INCDIR = include
+OBJDIR = obj
+BINDIR = bin
 
-SRCS = $(wildcard $(DIR_SRC)/*.c) $(wildcard $(UTILS_DIR)/*.c)
-OBJS = $(SRCS:.c=.o)
+SRC = $(wildcard $(SRCDIR)/*.c)
+OBJ = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRC))
+EXE = $(BINDIR)/minimal-shell
 
-EXECUTABLE = hsh
+.PHONY: all clean
 
-$(EXECUTABLE): $(OBJS)
-    $(cc) $(CFLAGS) $(OBJS) -o $@
+all: $(EXE)
 
-%.o: %.c
+$(EXE): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $@
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: clean
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
 clean:
-	rm -f $(OBJS) $(EXECUTABLE)
+	rm -rf $(OBJDIR) $(EXE)

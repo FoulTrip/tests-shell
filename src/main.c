@@ -1,42 +1,28 @@
-#include "prompt.h"
-#include "command.h"
-#include <sys/types.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include "../include/executeCommand.h"
+
+#define MAX_INPUT_LENGTH 256
 
 int main()
 {
-    char *input;
+	char input[MAX_INPUT_LENGTH];
+	printf("SIMPLE SHELL by: Ricardo Valdez and David Vasquez\n");
 
-    while (1)
-    {
-        print_prompt();
-        input = read_input();
+	while (1)
+	{
+		printf("$ ");
+		fflush(stdout);
 
-        if (strcmp(input, "exit") == 0)
-        {
-            free(input);
-            break;
-        }
+		if (fgets(input, sizeof(input), stdin) == NULL)
+		{
+			break;
+		}
 
-        pid_t pid = fork();
+		input[strcspn(input, "\n")] = '\0';
 
-        if (pid < 0)
-        {
-            perror("Error creating a child process");
-            exit(EXIT_FAILURE);
-        }
-        else if (pid == 0)
-        {
-            execute_command(input);
-            exit(EXIT_SUCCESS);
-        }
-        else
-        {
-            wait(NULL);
-        }
+		executeCommand(input);
+	}
 
-        free(input);
-    }
-
-    return (0);
+	return (0);
 }

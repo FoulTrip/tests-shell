@@ -19,7 +19,7 @@ git clone https://github.com/FoulTrip/tests-shell.git
 ```bash
 make
 ```
-3. Go tu /bin and run the shell:
+3. Go to /bin and run the shell:
 ```bash
 ./hsh
 ```

@@ -8,7 +8,7 @@ BINDIR = bin
 
 SRC = $(wildcard $(SRCDIR)/*.c)
 OBJ = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRC))
-EXE = $(BINDIR)/minimal-shell
+EXE = $(BINDIR)/hsh
 
 .PHONY: all clean
 

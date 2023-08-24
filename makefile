@@ -14,8 +14,8 @@ EXE = $(BINDIR)/minimal-shell
 
 all: $(EXE)
 
-$(EXE): $(OBJ) | $(BINDIR)
-	$(CC) $(CFLAGS) $^ -o $@
+$(EXE): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $@
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@

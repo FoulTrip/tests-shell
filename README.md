@@ -15,7 +15,7 @@ To compile and run the Custom Shell on your system, follow these steps:
 ```bash
 git clone https://github.com/FoulTrip/tests-shell.git
 ```
-2. Compile the source code using GCC:
+2. Compile the source code using makefile:
 ```bash
 make
 ```

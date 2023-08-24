@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -pedantic -std=gnu89 -Iinclude
+CFLAGS = -Wall -Werror -Wextra -pedantic -std=gnu89 -I$(INCDIR)
 
 SRCDIR = src
 INCDIR = include
@@ -14,14 +14,17 @@ EXE = $(BINDIR)/minimal-shell
 
 all: $(EXE)
 
-$(EXE): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $@
+$(EXE): $(OBJ) | $(BINDIR)
+	$(CC) $(CFLAGS) $^ -o $@
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
+
+$(BINDIR):
+	mkdir -p $(BINDIR)
 
 clean:
 	rm -rf $(OBJDIR) $(EXE)
